@@ -1,15 +1,16 @@
-import { useState } from 'react'
-//import reactLogo from './assets/react.svg'
-//import './App.css'
+import React from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <p>Test</p>
-    </div>
-  )
+export default function App(){
+    return(
+        <div>
+            <h1>Speed + Typing</h1>
+            <textarea
+                defaultValue='Initial value'
+            />
+            <h4>Time Remaining: 00:00</h4>
+            <button>Start</button>
+            <h1>Word Count : 0</h1>
+        </div>
+        
+    )
 }
-
-export default App

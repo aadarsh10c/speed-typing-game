@@ -1,7 +1,4 @@
-*{
-    margin: 0;
-    padding: 0;
-}
+
 
 *,
 *::before,
@@ -20,10 +17,11 @@ body{
 html, body {
     background: black;
     color: #00b800;
-    padding-top: 10px;
+    padding: 1rem;
     font-family: 'Press Start 2P', cursive;
     text-align: center;
 }
+
 
 .button {
     font-weight: 700;
@@ -52,7 +50,7 @@ textarea {
     width: 90%;
     margin: 0 auto;
     outline: none;
-    height: 200px;
+    height: 20rem;
     background: #00b800;
-    padding: 10px;
+    padding: 1rem;
 }
