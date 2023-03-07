@@ -12,6 +12,7 @@ export default function App(){
             setTimeout( () => setTimeRemaining( time => time - 1), 1000)
         }else if( timeRemaining == 0 ){
             setIsTimeRemaining( false )
+            calculateWords( track )
         }
     } , [ timeRemaining, isTimeRemaining ] )
 
@@ -19,10 +20,17 @@ export default function App(){
         setTrack( event.target.value )
     }
 
-    const calculateWords = ( text ) => {
-        let words = text.trim().split( " " )
+    const calculateWords = ( track ) => {
+        let words = track.trim().split( " " )
         let filteredWordCount = words.filter( value => value != '').length
         setCount( filteredWordCount )
+    }
+
+    const startClock = () => {
+        setTrack('')
+        setCount(0)
+        setIsTimeRemaining(true)
+        setTimeRemaining( 5 )
     }
 
     return(
@@ -35,7 +43,7 @@ export default function App(){
             />
             <h4>Time Remaining: {timeRemaining}</h4>
             <button 
-                onClick={ () => setIsTimeRemaining( val => !val) }
+                onClick={ startClock }
                 >Start</button>
             <h1>Word Count : {count}</h1>
         </div>
