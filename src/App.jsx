@@ -11,8 +11,7 @@ export default function App(){
         if ( isTimeRemaining && timeRemaining > 0 ){
             setTimeout( () => setTimeRemaining( time => time - 1), 1000)
         }else if( timeRemaining == 0 ){
-            setIsTimeRemaining( false )
-            calculateWords( track )
+            endGame()
         }
     } , [ timeRemaining, isTimeRemaining ] )
 
@@ -26,11 +25,15 @@ export default function App(){
         setCount( filteredWordCount )
     }
 
-    const startClock = () => {
+    const startGame = () => {
         setTrack('')
         setCount(0)
         setIsTimeRemaining(true)
         setTimeRemaining( 5 )
+    }
+    const endGame = () => {
+        setIsTimeRemaining( false )
+        calculateWords( track )
     }
 
     return(
@@ -43,7 +46,7 @@ export default function App(){
             />
             <h4>Time Remaining: {timeRemaining}</h4>
             <button 
-                onClick={ startClock }
+                onClick={ startGame }
                 >Start</button>
             <h1>Word Count : {count}</h1>
         </div>
