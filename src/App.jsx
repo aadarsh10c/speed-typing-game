@@ -43,10 +43,12 @@ export default function App(){
                 name='track'
                 value={track}
                 onChange={handleChange}
+                disabled={!isTimeRemaining}
             />
             <h4>Time Remaining: {timeRemaining}</h4>
             <button 
                 onClick={ startGame }
+                disabled={isTimeRemaining}
                 >Start</button>
             <h1>Word Count : {count}</h1>
         </div>

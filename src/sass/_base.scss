@@ -50,6 +50,9 @@ html, body {
     }&:active{
         transform: translateY(1px);
     }
+    &:disabled{
+        cursor: not-allowed;
+    }
 }
 
 h1 {
@@ -66,4 +69,8 @@ textarea {
     height: 20rem;
     background: #00b800;
     padding: 1rem;
+    &:disabled{
+        background-color: #a5a2a2;
+    }
+
 }
