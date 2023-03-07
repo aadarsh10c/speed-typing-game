@@ -1,9 +1,19 @@
-import React , {useState} from 'react'
+import React , { useState, useEffect } from 'react'
 
 export default function App(){
 
     const [ track , setTrack ] = useState('')
     const [ count , setCount ] = useState( 0 )
+    const [ timeRemaining , setTimeRemaining] = useState( 5 )
+    const [ isTimeRemaining , setIsTimeRemaining ] = useState( false )
+
+    useEffect( () => {
+        if ( isTimeRemaining && timeRemaining > 0 ){
+            setTimeout( () => setTimeRemaining( time => time - 1), 1000)
+        }else if( timeRemaining == 0 ){
+            setIsTimeRemaining( false )
+        }
+    } , [ timeRemaining, isTimeRemaining ] )
 
     const handleChange = ( event ) => {
         setTrack( event.target.value )
@@ -23,9 +33,9 @@ export default function App(){
                 value={track}
                 onChange={handleChange}
             />
-            <h4>Time Remaining: 00:00</h4>
+            <h4>Time Remaining: {timeRemaining}</h4>
             <button 
-                onClick={ () => calculateWords( track ) }
+                onClick={ () => setIsTimeRemaining( val => !val) }
                 >Start</button>
             <h1>Word Count : {count}</h1>
         </div>
