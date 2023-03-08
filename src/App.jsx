@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from 'react'
+import React , { useState, useEffect, useRef } from 'react'
 
 export default function App(){
 
@@ -6,6 +6,7 @@ export default function App(){
     const [ count , setCount ] = useState( 0 )
     const [ timeRemaining , setTimeRemaining] = useState( 5 )
     const [ isTimeRemaining , setIsTimeRemaining ] = useState( false )
+    const textBoxRef = useRef( null )
 
     useEffect( () => {
         if ( isTimeRemaining && timeRemaining > 0 ){
@@ -30,6 +31,8 @@ export default function App(){
         setCount(0)
         setIsTimeRemaining(true)
         setTimeRemaining( 5 )
+        textBoxRef.current.disabled = false
+        textBoxRef.current.focus()
     }
     const endGame = () => {
         setIsTimeRemaining( false )
@@ -44,6 +47,7 @@ export default function App(){
                 value={track}
                 onChange={handleChange}
                 disabled={!isTimeRemaining}
+                ref={ textBoxRef }
             />
             <h4>Time Remaining: {timeRemaining}</h4>
             <button 
